@@ -18,9 +18,7 @@ def word_rule(word: str = '', word_length: int = 0, char_to_find: str = '', star
                         temp_words[word] += 1
                     else:
                         temp_words[word] = 1
-            for k,v in temp_words.items():
-                if v > len(char_index)-1:
-                    print(k)
+            loop_dictionary(temp_words, char_index)
         elif custom_finder:
             temp_words = {}
             for k,v in custom_finder.items():
@@ -29,9 +27,7 @@ def word_rule(word: str = '', word_length: int = 0, char_to_find: str = '', star
                             temp_words[word] += 1
                     else:
                         temp_words[word] = 1
-            for k,v in temp_words.items():
-                if v > len(custom_finder)-1:
-                    print(k)
+            loop_dictionary(temp_words, custom_finder)
         elif contains_char:
             temp_words = {}
             for i in contains_char:
@@ -40,11 +36,14 @@ def word_rule(word: str = '', word_length: int = 0, char_to_find: str = '', star
                         temp_words[word] += 1
                     else:
                         temp_words[word] = 1
-            for k,v in temp_words.items():
-                if v > len(contains_char)-1:
-                    print(k)
+            loop_dictionary(temp_words, contains_char)
         else:
             print(word)
+            
+def loop_dictionary(temp_dict, custom):
+    for k,v in temp_dict.items():
+        if v > len(custom)-1:
+            print(k)
 
 
 if __name__ == '__main__':            
